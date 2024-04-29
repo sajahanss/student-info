@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sinfo input{
+            height: 25px;
+            width: 250px;
+            margin-left: 20px;
+            border-style: none;
+            border: 1px solid rgba(0,0,0,0.3);
+           
+        }
+
+        .sinfo{
+            float: left;
+            margin-right: 100px;
+            background-color: #ddd;
+            margin-top: 50px;
+            border-radius: 5px;
+            border-style: none;
+            padding: 10px;
+            width: 30%;
+        }
+       table{
+        border: 1px solid #d2caca;
+        width: 50%;
+       }
+       th,td{
+        text-align: left;
+        height: 30px;
+        word-break:keep-all;
+       
+        
+       }
+       
+       
+
+        .sinfo button{
+            background-color: rgb(21, 19, 25);
+            border-radius: 5px;
+            font-weight: bold;
+            border-style: none;
+            height: 25px;
+            width: 75px;
+            color: white;
+
+            
+        }
+
+        #f-form{
+            display: none;
+            
+        }
+
+        
+    </style>
+</head>
+<body id="body">
+    <div class="head">
+        <h2>Background Color Changer</h2>
+        <input type="text" id="icolor" placeholder="Enter color to change Baground color">
+        <input type="color"  id="icolor1" onchange="color()">
+        <button onclick="colorchange()">Click To Apply</button>
+    
+    </div>
+
+    <div class="sinfo">
+        <h1>Student Information </h1>
+        <table style="width: 100%;">
+            <tr>
+                <td>Student Id  </td> <td><input type="text" id="sid"></td>
+            </tr>
+            <tr>
+                <td>Student Name  </td> <td><input type="text" id="sname"></td>
+            </tr>
+            <tr>
+                <td>Tamil  </td> <td><input type="text" id="m1"></td>
+            </tr>
+            <tr>
+                <td>English  </td> <td><input type="text" id="m2"></td>
+            </tr>
+            <tr>
+                <td>Maths </td> <td><input type="text" id="m3"></td>
+            </tr>
+            <tr>    
+                <td>Science </td> <td><input type="text" id="m4"></td>
+            </tr>
+            <tr>    
+                <td>Social Science </td> <td><input type="text" id="m5"></td>
+            </tr>
+            <tr>
+                <td><button onclick="studinfo()">Submit</button></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="f-form">
+        <table>
+            
+              <th> <h1>Student Mark Sheet</h1></th>
+           
+            <tr style="margin-bottom: 10px; font-size: 1rem;">
+                <th>Name</th> <th id="pname"></th>
+            </tr>
+            <tr>
+                <th>Student ID</th> <th id="pid"></th>
+            </tr>
+        </table>
+        <table>
+            
+                <tr>
+                    <th>Subject</th>
+                    <th>Mark Obtained</th>
+                    <th>Total Mark</th>
+                    <th>Result</th>
+                
+                </tr>
+              
+            
+            <tr>
+                <td id="t">Tamil</td>
+                <td id="tm1"></td>
+                <td id="ttm">100</td>
+                <td id="tr"></td>
+            </tr>
+            <tr>
+                <td id="e">English</td>
+                <td id="em1"></td>
+                <td id="etm">100</td>
+                <td id="er"></td>
+            </tr>
+            <tr>
+                <td id="m">Maths</td>
+                <td id="mm1"></td>
+                <td id="mtm">100</td>
+                <td id="mr"></td>
+            </tr>
+            <tr>
+                <td id="s">Science</td>
+                <td id="sm1"></td>
+                <td id="stm">100</td>
+                <td id="sr"></td>
+            </tr>
+            <tr>
+                <td id="ss">Social Science</td>
+                <td id="ssm1"></td>
+                <td id="sstm">100</td>
+                <td id="ssr"></td>
+            </tr>
+            <tr style="margin-top: 10px; font-size: 1rem;">
+                
+                <th>Total</th>
+                <th id="totm"></th>
+                <th id="tottm">500</th>
+                <th id="totres"></th>
+            </tr>
+            <tr style="margin-top: 10px; font-size: 1rem;">
+                <th>Percentage : </th>
+                <th colspan="3" id="perc"></th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+     function colorchange(){
+        var colorname=document.getElementById("icolor").value;
+        document.getElementById("body").style.backgroundColor=colorname;
+     }
+
+     function color()
+     {
+        
+        document.getElementById("icolor").value=document.getElementById("icolor1").value;
+        var colorname=document.getElementById("icolor").value;
+        document.getElementById("body").style.backgroundColor=colorname;
+     }
+
+     function studinfo()
+     {
+        var sid=document.getElementById("sid").value;
+        var sname=document.getElementById("sname").value;
+        var m1=document.getElementById("m1").value;
+        var m2=document.getElementById("m2").value;
+        var m3=document.getElementById("m3").value;
+        var m4=document.getElementById("m4").value;
+        var m5=document.getElementById("m5").value;
+        var res=0;
+
+        document.getElementById("f-form").style.display="block";
+
+        if(sid === "" || sname === "" || m1 === "" || m2 === "" || m3 === "" || m4 === "" || m5 === "")
+        {
+            alert("Please fill all the feild");
+            
+        }else{
+            document.getElementById("pname").innerHTML= sname.toUpperCase();
+            document.getElementById("pid").innerHTML=sid.toUpperCase();
+            document.getElementById("tm1").innerHTML=m1;
+            document.getElementById("em1").innerHTML=m2;
+            document.getElementById("mm1").innerHTML=m3;
+            document.getElementById("sm1").innerHTML=m4;
+            document.getElementById("ssm1").innerHTML=m5;
+
+            
+
+            var totalmark=parseInt(m1)+parseInt(m2)+parseInt(m3)+parseInt(m4)+parseInt(m5)
+            document.getElementById("totm").innerHTML=totalmark;
+
+            var per=(totalmark/500)*100;
+            document.getElementById("perc").innerHTML=per.toFixed()+" %";
+
+            if(m1>=35)
+            {
+                document.getElementById("tr").innerHTML="PASS"; 
+                document.getElementById("tr").style.color="green" ;
+                res =res+1;
+            }else
+            {
+                document.getElementById("tr").innerHTML="FAIL"; 
+                document.getElementById("tr").style.color="red" ;
+            }
+
+            if(m2>=35)
+            {
+                document.getElementById("er").innerHTML="PASS"; 
+                document.getElementById("er").style.color="green" ;
+                res =res+1;
+            }else
+            {
+                document.getElementById("er").innerHTML="FAIL"; 
+                document.getElementById("er").style.color="red" ;
+            }
+            if(m3>=35)
+            {
+                document.getElementById("mr").innerHTML="PASS"; 
+                document.getElementById("mr").style.color="green" ;
+                res =res+1;
+            }else
+            {
+                document.getElementById("mr").innerHTML="FAIL"; 
+                document.getElementById("mr").style.color="red" ;
+            }
+            if(m4>=35)
+            {
+                document.getElementById("sr").innerHTML="PASS"; 
+                document.getElementById("sr").style.color="green" ;
+                res =res+1;
+            }else
+            {
+                document.getElementById("sr").innerHTML="FAIL"; 
+                document.getElementById("sr").style.color="red" ;
+            }
+            if(m5>=35)
+            {
+                document.getElementById("ssr").innerHTML="PASS"; 
+                document.getElementById("ssr").style.color="green" ;
+                res =res+1;
+            }else
+            {
+                document.getElementById("ssr").innerHTML="FAIL"; 
+                document.getElementById("ssr").style.color="red" ;
+            }
+
+            if(res==5)
+            {
+                document.getElementById("totres").innerHTML="PASS"; 
+                document.getElementById("totres").style.color="green" ;
+            }else
+            {
+                document.getElementById("totres").innerHTML="FAIL"; 
+                document.getElementById("totres").style.color="red" ;
+            }
+            
+
+        }
+
+     }
+
+    </script>
+
+    
+</body>
+</html>
